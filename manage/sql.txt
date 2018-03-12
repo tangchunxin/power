@@ -1,0 +1,28 @@
+/*------- CREATE SQL---------*/
+CREATE TABLE `power` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `modular` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '模块 1 c2c平台 2 竞价平台',
+  `type` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '类型 0 用户权限 1 模板',
+  `uid` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT 'uid',
+  `name` char(64) NOT NULL DEFAULT '' COMMENT '命名：例如（北京客服模板）',
+  `power1` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '权限',
+  `power2` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '权限',
+  `power3` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '权限',
+  `power4` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '权限',
+  `power5` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '权限',
+  `power6` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '权限',
+  `init_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mod_type_uid` (`modular`,`type`,`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限';
+
+
+#20160714
+ALTER TABLE `power` 
+	MODIFY COLUMN `power1` char(255) NOT NULL DEFAULT '0' COMMENT '权限' AFTER `name`,
+	MODIFY COLUMN `power2` char(255) NOT NULL DEFAULT '0' COMMENT '权限' AFTER `power1`,
+	MODIFY COLUMN `power3` char(255) NOT NULL DEFAULT '0' COMMENT '权限' AFTER `power2`,
+	MODIFY COLUMN `power4` char(255) NOT NULL DEFAULT '0' COMMENT '权限' AFTER `power3`,
+	MODIFY COLUMN `power5` char(255) NOT NULL DEFAULT '0' COMMENT '权限' AFTER `power4`,
+	MODIFY COLUMN `power6` char(255) NOT NULL DEFAULT '0' COMMENT '权限' AFTER `power5`;
